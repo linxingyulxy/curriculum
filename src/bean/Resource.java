@@ -37,6 +37,7 @@ public class Resource
         return ++num;
     }
     
+    //ÉêÇë×ÊÔ´
     public boolean obtain(){
         if(num<=0)
             return false;
