@@ -15,7 +15,7 @@ import constant.Constants;
 
 public class Curriculum
 {
-    private Resource resource; //资源
+    private Resource resource;  //资源
     private int sort;   //优先级 
     private Subject  subject;//学科
     private int week;//周几
