@@ -27,8 +27,15 @@ public class Teacher
     private boolean head;//是否班主任
     private boolean cadre;//是否中层干部
     private HashMap<String, Curriculum> map;//老师可用的课程，key的格式是周几第几节：21周二第一节。
+    private Require[] requires;//要求,如无要求，默认上午3课时，下午2课时
     
-    public HashMap<String, Curriculum> getMap()
+    public Require[] getRequires() {
+		return requires;
+	}
+	public void setRequires(Require[] requires) {
+		this.requires = requires;
+	}
+	public HashMap<String, Curriculum> getMap()
     {
         return map;
     }
@@ -99,6 +106,7 @@ public class Teacher
     
     //设置课程
     public void put(int week,int part,Curriculum curriculum){
+    	curriculum.setType(Constants.TYPE_ALREADY);
         this.map.put(NameUtil.getName(week, part), curriculum);
     }
     
@@ -120,5 +128,29 @@ public class Teacher
         }
         curriculum.setSort(Constants.LOW_PRIORITY);
         this.put(week, part, curriculum);
+    }
+    
+    //计算老师周几 已经安排了几节课
+    public int count(int week,int time){
+    	int count=0;
+    	if(time==Constants.TIME_MORNING){
+    		for(int i=1;i<=4;i++){
+    			Curriculum curriculum=this.map.get(NameUtil.getName(week, i));
+    			if(curriculum.getType()==Constants.TYPE_ALREADY)
+    				count++;
+    		}
+    	}
+    	else if(time==Constants.TIME_AFTERNONG){
+    		for(int i=5;i<=7;i++){
+    			Curriculum curriculum=this.map.get(NameUtil.getName(week, i));
+    			if(curriculum.getType()==Constants.TYPE_ALREADY)
+    				count++;
+    		}
+    	}
+    	else if(time==Constants.TIME_ALL){
+    		count+=count(week, Constants.TIME_MORNING);
+    		count+=count(week, Constants.TIME_AFTERNONG);
+    	}
+    	return count;
     }
 }

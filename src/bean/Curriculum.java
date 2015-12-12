@@ -11,6 +11,8 @@
 
 package bean;
 
+import constant.Constants;
+
 public class Curriculum
 {
     private Resource resource; //资源
@@ -18,8 +20,22 @@ public class Curriculum
     private Subject  subject;//学科
     private int week;//周几
     private int part;//第几节
+    private Teacher teacher;//哪个老师上这门课
+    private int type=Constants.TYPE_CAN;//该课时 是否已经安排，默认未安排
     
-    public Resource getResource()
+    public int getType() {
+		return type;
+	}
+	public void setType(int type) {
+		this.type = type;
+	}
+	public Teacher getTeacher() {
+		return teacher;
+	}
+	public void setTeacher(Teacher teacher) {
+		this.teacher = teacher;
+	}
+	public Resource getResource()
     {
         return resource;
     }
