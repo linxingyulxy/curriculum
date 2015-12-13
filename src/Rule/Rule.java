@@ -11,11 +11,10 @@
 
 package Rule;
 
-import constant.Constants;
 import Exception.PriorityException;
 import bean.Require;
 import bean.Teacher;
-import util.NameUtil;
+import constant.Constants;
 
 public class Rule
 {

@@ -6,7 +6,8 @@
  * 修改时间：2015年12月11日
  * 跟踪单号：
  * 修改单号：
- * 修改内容：
+ * 修改内容：1.去除subject属性，该课时是什么学科的，可以经过teacher这个属性获取，teacher.getSubject()
+ * 				2.去除 resource属性，该课时是否要占用资源，由subject 决定
  */
 
 package bean;
@@ -15,9 +16,7 @@ import constant.Constants;
 
 public class Curriculum
 {
-    private Resource resource;  //资源
-    private int sort;   //优先级 
-    private Subject  subject;//学科
+    private int sort=Constants.NORMAL_PRIORITY;   //优先级 
     private int week;//周几
     private int part;//第几节
     private Teacher teacher;//哪个老师上这门课
@@ -35,14 +34,6 @@ public class Curriculum
 	public void setTeacher(Teacher teacher) {
 		this.teacher = teacher;
 	}
-	public Resource getResource()
-    {
-        return resource;
-    }
-    public void setResource(Resource resource)
-    {
-        this.resource = resource;
-    }
     public int getSort()
     {
         return sort;
@@ -50,14 +41,6 @@ public class Curriculum
     public void setSort(int sort)
     {
         this.sort = sort;
-    }
-    public Subject getSubject()
-    {
-        return subject;
-    }
-    public void setSubject(Subject subject)
-    {
-        this.subject = subject;
     }
     public int getWeek()
     {

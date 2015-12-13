@@ -24,4 +24,5 @@ public class Constants
     public static int TYPE_ALREADY=1;//已经安排了
     public static int TYPE_CANNOT=-1;//不能安排
     public static int TYPE_CAN=0;//可以安排
+    public static int TYPE_LISTEN=2;//安排听课
 }

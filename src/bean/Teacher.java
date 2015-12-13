@@ -153,4 +153,18 @@ public class Teacher
     	}
     	return count;
     }
+    
+    public Teacher(){
+    	//初始化这个老师的 curriculum
+    	Curriculum curriculum=new Curriculum();
+    	curriculum.setTeacher(this);
+    	//初始化map
+    	for(int i=0;i<5;i++){ //一周五天
+    		for(int j=0;j<8;j++){//每天8节课，上午5节，下午3节
+    			curriculum.setWeek(i);
+    			curriculum.setPart(j);
+    			this.put(i, j, curriculum);
+    		}
+    	}    	
+    }
 }

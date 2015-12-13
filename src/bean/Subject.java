@@ -14,8 +14,17 @@ package bean;
 public class Subject
 {
     private String name;
+    private boolean resource=false;//是否需要占用资源
 
-    public String getName()
+    public boolean isResource() {
+		return resource;
+	}
+
+	public void setResource(boolean resource) {
+		this.resource = resource;
+	}
+
+	public String getName()
     {
         return name;
     }
